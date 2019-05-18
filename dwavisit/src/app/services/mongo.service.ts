@@ -14,4 +14,10 @@ export class MongoService {
   getMoradores() {
     return this.http.get('http://localhost:3000/moradores');
   }
+  getVisitantes() {
+    return this.http.get('http://localhost:3000/visitantes');
+  }
+  postMorador(morador: any){
+    return this.http.post('http://localhos:3000/cadastro-morador', morador);
+  }
 }

@@ -43,19 +43,31 @@ app.get('/moradores', (req, resp) => {
 
 app.get('/visitantes', (req, resp) => {
     // Select para TODOS os visitantes.
-    var p = {nome: "Fabio", cpf: "99988877766"};
-    resp.send(JSON.stringify(p));
+    resp.header("Access-Control-Allow-Origin", "*");
+    MongoClient.connect("mongodb://localhost:27017/dwavisit", 
+    { useNewUrlParser: true },
+    function(err, client){
+        if(err) throw err;
+        else{
+            var db = client.db("dwavisit");
+            var collection = db.collection("visitantes").find().toArray(function(err, result){
+                if(err) throw err
+                resp.send(result);
+                resp.end();
+            })
+        }
+    })
 });
 
 app.get('/moradores/:id_morador', (req, resp) => {
     // Select para todos UM morador específico. -> Botão EDITAR (morador)
-    var p = {nome: "Fabio", cpf: "99988877766"};
+    var p = {nome: "Rdolfo", cpf: "99988877766"};
     resp.send(JSON.stringify(p));
 });
 
 app.get('/visitantes/:id_visitante', (req, resp) => {
     // Select para todos UM visitante específico. -> Botão EDITAR (Visitante)
-    var p = {nome: "Fabio", cpf: "99988877766"};
+    var p = {nome: "Luis", cpf: "99988877766"};
     resp.send(JSON.stringify(p));
 });
 
@@ -77,6 +89,16 @@ app.delete('/visitantes/:id_visitante', (req, resp) => {
 
 app.post('/cadastro-morador', (req, resp) => {
     //Criar um morador específico. -> Botão ADICIONAR (morador)
+    resp.header("Access-Control-Allow-Origin", "*");
+    MongoClient.connect("mongodb://localhost:27017/dwavisit", 
+    { useNewUrlParser: true },
+    function(err, client){
+        if(err) throw err;
+        else{
+            var db = client.db("dwavisit");
+            var collection = db.collection("moradores").insert();
+        }
+    })
 })
 app.post('/cadastro-visitante', (req, resp) => {
     //Criar um visitante específico. -> Botão ADICIONAR (visitante)

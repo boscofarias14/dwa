@@ -16,12 +16,11 @@ export class CadastroMoradoresComponent implements OnInit {
   ngOnInit() {
   }
 
-  TestaAPI() {
-    const data = this.http.get('http://countryapi.gear.host/v1/Country/getCountries').subscribe(dado => {
-    this.foto = dado;
-    console.log(this.foto);
-  });
+  // TestaAPI() {
+  //   const data = this.http.get('http://countryapi.gear.host/v1/Country/getCountries').subscribe(dado => {
+  //   this.foto = dado;
+  //   console.log(this.foto);
+  // });
 
-  }
 
 }
