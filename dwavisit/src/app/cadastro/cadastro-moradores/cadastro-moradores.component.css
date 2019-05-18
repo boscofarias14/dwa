@@ -1,0 +1,34 @@
+mat-form-field, input{
+  display: block;
+  width:100%;
+}
+
+h2{
+  font-size:24px;
+  font-family: 'Oswald';
+  text-transform:uppercase;
+  padding-bottom:10px;
+}
+
+mat-form-field, input{
+  display: block;
+  width:100%;
+}
+h4{
+  font-size:20px;
+  font-family: 'Oswald';
+  padding-bottom:13px;
+}
+section#cadastro-morador{
+  display: flex;
+}
+.form-cadastro{
+  width: 60%;
+}
+.form-cadastro form{
+  width: 100%;
+}
+section#foto-cadastro{
+  display: flex;
+  flex-direction: column;
+}

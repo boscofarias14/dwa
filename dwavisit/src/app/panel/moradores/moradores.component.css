@@ -1,0 +1,14 @@
+mat-card{
+  width: 17%;
+  margin: 1.5%;
+  padding-bottom:0;
+}
+mat-card img{
+  margin-bottom:0;
+}
+div.buttons{
+  display:flex;
+}
+div.buttons button{
+  text-transform: uppercase;
+}

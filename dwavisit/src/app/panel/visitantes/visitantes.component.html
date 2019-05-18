@@ -1,0 +1,41 @@
+<!-- <mat-toolbar>
+    <mat-toolbar-row class='title'>
+       <mat-icon>supervised_user_circle</mat-icon> Visitantes
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <div class='container'>
+            <table mat-table [dataSource]="dataSource"> 
+               
+                <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let visita"> {{visita.name}} </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef > Status </th>
+                <td mat-cell *matCellDef="let visita"> {{visita.status}} </td>
+                </ng-container>
+            
+                <ng-container matColumnDef="carro">
+                    <th mat-header-cell *matHeaderCellDef> ID </th>
+                    <td mat-cell *matCellDef="let visita"> {{visita.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="hora">
+                    <th mat-header-cell *matHeaderCellDef> Data </th>
+                    <td mat-cell *matCellDef="let visita"> {{visita.hora}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>   
+            </table>
+        </div>
+      </mat-toolbar-row> 
+      <mat-toolbar-row class='botao'>
+          <button mat-button><span class='title-bt'>+Visitante</span> <mat-icon class='ico-bt'>supervised_user_circle</mat-icon></button>   
+          
+        </mat-toolbar-row>
+    <mat-toolbar>
+</mat-toolbar> -->
+<dwa-lista-visitantes></dwa-lista-visitantes>
+
+

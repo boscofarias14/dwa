@@ -1,0 +1,143 @@
+/* .title {
+    position: absolute;
+    top:110px;
+    height:50px;
+    font-size:1.5em;
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(#214985, #1e65d0);
+    width:750px;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 2px solid #214985;
+}
+
+.container {
+    position: relative;
+    height:235px;
+    width:100%;
+    overflow: auto;
+    top:65px;
+    left: 0px;
+}
+
+.ico-bt {
+    vertical-align: middle;
+    background-color: white;
+    color: #9424e3;
+    padding:13px 10px 12px 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: solid 4px #d6d6d6;
+}
+
+.ico-car {
+    vertical-align: middle;
+    background-color: white;
+    color: #1ad6a8;
+    padding:13px 10px 12px 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: solid 4px #d6d6d6;
+}
+
+.title-bt {
+    color:white;
+    background: linear-gradient(#50127c, #9424e3);
+    padding:16px 35px 18px 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom: solid 4px #50127c;
+}
+
+.title-car {
+    color:white;
+    background: linear-gradient(#15a883, #1ad6a8);
+    padding:16px 35px 18px 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom: solid 4px #118568;
+}
+
+.id-left {
+    margin-left: 50px;
+
+}
+
+.border-ico {
+    border-left: 2px solid white;
+    padding-left: 5px;
+}
+.botao {
+    position: relative;
+    top:150px;
+    bottom:10px;
+    left:0px;
+}
+
+mat-toolbar {
+    background-color: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8em;
+    color: #272727;
+}
+
+mat-icon {
+    padding-right:5%;
+}
+
+button {
+    margin: 5px 25px 5px 5px;
+    padding: 0px;
+    border-radius: 5px;
+    border:none;
+    font-size: 0.7em;
+    font-family: verdana;
+    font-weight: bold;
+    background-color: white;
+}
+
+mat-icon {
+ padding-right:5%;
+}
+
+span {
+    cursor: pointer;
+}
+
+
+table {
+    background-color: #A6BFE2;
+
+}
+
+th {
+    width: 170px;
+    color:white;
+
+}
+td {
+    width: 170px;
+
+}
+
+
+mat-header-row, mat-row{
+    border: none;
+} */
+
+
+.container-flex{
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+  }
+  .parte-flex{
+    flex:1 1 50%;
+    margin:0 10px;
+  }
+
+  h2{
+    font-family: 'Oswald';
+  }
+

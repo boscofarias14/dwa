@@ -1,0 +1,13 @@
+<mat-card *ngFor="let retorno of retornoDB">
+  <mat-card-title>{{ retorno.nome }}</mat-card-title>
+  <mat-card-subtitle>Morador</mat-card-subtitle>
+  <img
+    mat-card-image
+    src='{{retorno.foto}}'
+    alt="Photo of a Shiba Inu"
+  />
+  <div class="buttons">
+    <button mat-button color="primary">Editar</button>
+    <button mat-button color="warn">Excluir</button>
+  </div>
+</mat-card>

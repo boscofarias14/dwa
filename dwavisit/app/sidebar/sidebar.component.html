@@ -1,0 +1,28 @@
+
+<mat-list class="painel-lateral">
+  <mat-list-item class="perfil">
+    <mat-card class="perfil-sidebar">
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>Gatinho</mat-card-title>
+        <mat-card-subtitle>Bloco 2A - Aptº 104</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <a [routerLink]="['/visao-geral']" routerLinkActive="link-active">
+    <mat-list-item>Visão Geral</mat-list-item>
+  </a>
+  <mat-divider></mat-divider>
+  <a [routerLink]="['/moradores']">
+    <mat-list-item>Moradores</mat-list-item>
+  </a>
+  <mat-divider></mat-divider>
+  <a [routerLink]="['/visitantes']">
+    <mat-list-item>Visitantes</mat-list-item>
+  </a>
+  <mat-divider></mat-divider>
+  <a [routerLink]="['/info']">
+    <mat-list-item>Informações</mat-list-item>
+  </a>
+</mat-list>

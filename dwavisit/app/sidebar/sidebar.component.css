@@ -1,0 +1,42 @@
+mat-list{
+  background-color: #343B4A;
+  color:#fff;
+  width:25%;
+}
+a mat-list-item{
+  text-decoration:none;
+  color:#fff;
+  transition: 0.5s ease;
+}
+a mat-list-item:hover{
+  background-color:#83988E;
+  padding-left:10px;
+  transition: 0.5s ease;
+}
+
+a {
+  text-decoration: none;
+}
+
+mat-card-header div{
+  width:60px;
+  height:60px;
+  background-image:url('../../assets/gatinho.jpg');
+  background-size:cover;
+  background-position:center;
+}
+
+mat-card.mat-card{
+  padding:0;
+  box-shadow: none !important;
+  background-color: #343B4A;
+  font-family: 'Oswald';
+  color:#fff;
+}
+mat-card.mat-card .mat-card-title{
+  font-size:24px;
+}
+mat-card.mat-card .mat-card-subtitle{
+  color:#fff;
+}
+

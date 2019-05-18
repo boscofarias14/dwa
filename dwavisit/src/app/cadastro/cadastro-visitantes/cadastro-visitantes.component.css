@@ -1,0 +1,17 @@
+mat-form-field, input{
+  display: block;
+  width:100%;
+}
+
+h2{
+  font-size:24px;
+  font-family: 'Oswald';
+  text-transform:uppercase;
+  padding-bottom:10px;
+}
+
+h4{
+  font-size:20px;
+  font-family: 'Oswald';
+  padding-bottom:13px;
+}
