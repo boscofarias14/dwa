@@ -1,14 +1,43 @@
 mat-card{
-  width: 17%;
+  /* width: 17%; */
   margin: 1.5%;
-  padding-bottom:0;
+  padding-bottom:15px;
+  width: 25%;
+  flex-grow: 0;
 }
 mat-card img{
-  margin-bottom:0;
+  border-radius: 50%;
+  display:block;
+  margin:0 auto;
+  width: 120px;
+}
+.mat-card-image{
+  width: 100%;
+  margin:0;
 }
 div.buttons{
   display:flex;
 }
 div.buttons button{
   text-transform: uppercase;
+}
+
+.lista-moradores{
+  display:flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+mat-card-actions{
+  text-align:center;
+  margin:10px auto 0 auto;
+}
+
+.sem-moradores{
+  display:flex;
+  flex-direction: column;
+}
+
+.addMorador{
+  margin-top: 10px;
 }

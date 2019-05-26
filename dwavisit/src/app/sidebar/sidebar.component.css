@@ -1,8 +1,11 @@
 mat-list{
   background-color: #343B4A;
   color:#fff;
-  width:25%;
-  height: 84vh;
+  width:20%;
+  position:fixed;
+  padding-top:100px;
+  height: 100%;
+  top:0;
 }
 a mat-list-item{
   text-decoration:none;

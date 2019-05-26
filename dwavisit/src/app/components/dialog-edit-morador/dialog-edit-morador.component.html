@@ -1,0 +1,44 @@
+<form>
+  <h2>Atualização de Morador</h2>
+  <mat-form-field>
+    <input class="col s12" matInput placeholder="Nome" required [(ngModel)]="morador.nome" [ngModelOptions]="{standalone: true}"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="CPF" required [(ngModel)]="morador.cpf" [ngModelOptions]="{standalone: true}"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Bloco" required [(ngModel)]="morador.bloco" [ngModelOptions]="{standalone: true}"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Apartamento" required [(ngModel)]="morador.apartamento" [ngModelOptions]="{standalone: true}"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Telefone" required [(ngModel)]="morador.telefone" [ngModelOptions]="{standalone: true}"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input type="email" matInput placeholder="E-mail" required [(ngModel)]="morador.email" [ngModelOptions]="{standalone: true}"/>
+  </mat-form-field>
+  <!-- <h4>Possui Veículo?</h4>
+  <div id="radioButton">
+    <mat-radio-group [(ngModel)]="possuiVeiculo" [ngModelOptions]="{standalone: true}">
+      <mat-radio-button class="example-radio-button" *ngFor="let opt of optionsVeiculo" [value]="opt">
+        {{opt}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div> -->
+  <div class="dados-veiculo">
+    <mat-form-field>
+      <input matInput placeholder="Placa do Veículo" [(ngModel)]="morador.placa_veiculo" [ngModelOptions]="{standalone: true}"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Modelo do Veículo / Marca" [(ngModel)]="morador.modelo_veiculo" [ngModelOptions]="{standalone: true}"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Cor do Veículo" [(ngModel)]="morador.cor_veiculo" [ngModelOptions]="{standalone: true}" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="morador" cdkFocusInitial>Salvar</button>
+  </div>
+</form>

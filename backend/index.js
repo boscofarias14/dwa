@@ -1,125 +1,140 @@
 const express = require("express");
+const body_parser = require('body-parser');
+const mongoose = require('mongoose');
 const port = 3000;
 const app = express();
 var MongoClient = require("mongodb").MongoClient;
+var cors = require('cors')
+const Morador = require('./morador');
+const Visitante = require('./visitante');
 
+app.use(body_parser.json());
+app.use(body_parser.urlencoded({extended:true}));
+app.use(cors());
+
+// mongoose.connect("mongodb://localhost:27017/dwavisit", 
+// { useNewUrlParser: true });
+
+mongoose.connect("mongodb+srv://dwaadmin:dwaadmin@clusterdwavisit-znci3.mongodb.net/test?retryWrites=true", 
+{ useNewUrlParser: true });
+
+var myLogger = function (req, res, next){ //Middleware - intercepta as requisições/respostas http
+    console.log(req.body);
+    next();
+}
+app.use(myLogger);
 
 // http://localhost:3000/
 app.get('/', (req, resp) => {
-resp.header("Access-Control-Allow-Origin", "*");
-   MongoClient.connect("mongodb://localhost:27017/dwavisit", 
-   { useNewUrlParser: true },
-   function(err, client){
-       if(err) throw err;
-       else{
-           var db = client.db("dwavisit");
-           var collection = db.collection("moradores").find().toArray(function(err, result){
-               if(err) throw err
-               resp.send(result);
-               resp.end();
-           })
-       }
-   })
-
-});
+    Morador.find().lean().exec((err, dados) => {
+        if(err){
+            resp.status(500).send(err);
+        }else{
+            resp.status(200).send(dados);
+        }
+    })
+})
 
 app.get('/moradores', (req, resp) => {
-    resp.header("Access-Control-Allow-Origin", "*");
-   MongoClient.connect("mongodb://localhost:27017/dwavisit", 
-   { useNewUrlParser: true },
-   function(err, client){
-       if(err) throw err;
-       else{
-           var db = client.db("dwavisit");
-           var collection = db.collection("moradores").find().toArray(function(err, result){
-               if(err) throw err
-               resp.send(result);
-               resp.end();
-           })
-       }
-   })
+    Morador.find().lean().exec((err, moradores) => {
+        if(err){
+            resp.status(500).send(err);
+        }else{
+            resp.status(200).send(moradores);
+        }
+    })
+})
 
-});
 
 app.get('/visitantes', (req, resp) => {
-    // Select para TODOS os visitantes.
+    Visitante.find().lean().exec((err, visitantes) => {
+        if(err){
+            resp.status(500).send(err);
+        }else{
+            resp.status(200).send(visitantes);
+        }
+    })
+});
+
+app.post('/moradores', (req, resp) => {
     resp.header("Access-Control-Allow-Origin", "*");
-    MongoClient.connect("mongodb://localhost:27017/dwavisit", 
-    { useNewUrlParser: true },
-    function(err, client){
-        if(err) throw err;
-        else{
-            var db = client.db("dwavisit");
-            var collection = db.collection("visitantes").find().toArray(function(err, result){
-                if(err) throw err
-                resp.send(result);
-                resp.end();
+    //Criar um morador específico. -> Botão ADICIONAR (morador)
+    m = new Morador({
+        nome: req.body.nome,
+        cpf: req.body.cpf,
+        bloco: req.body.bloco,
+        apartamento: req.body.apartamento,
+        telefone: req.body.telefone,
+        email:req.body.email,
+        possui_veiculo: req.body.possui_veiculo,         
+        placa_veiculo: req.body.placa_veiculo,
+        modelo_veiculo: req.body.modelo_veiculo,
+        cor_veiculo: req.body.cor_veiculo,
+        image: req.body.image,
+    });
+
+    m.save((err, mor) =>{
+        if(err){
+            resp.status(500).send(err);
+        }else{
+            resp.status(200).send(mor);
+        }
+    })
+})
+
+app.post('/visitantes', (req, resp) =>{
+    v = new Visitante({
+        nome: req.body.nome,
+        cpf: req.body.cpf,
+        contato: req.body.contato
+    });
+    
+    v.save((err, vis) =>{
+        if(err){
+            resp.status(500).send(err);
+        }else{
+            resp.status(200).send(vis);
+        }
+    })
+})
+
+app.patch('/moradores/:id', (req, resp) => {
+    Morador.findById(req.params.id, (err, morador) => {
+        if(err){
+            resp.status(500).send(err);
+        }else if(!morador){
+            resp.status(404).send({});
+        }else{
+            morador.nome= req.body.nome,
+            morador.cpf = req.body.cpf,
+            morador.bloco = req.body.bloco,
+            morador.apartamento = req.body.apartamento,
+            morador.telefone = req.body.telefone,
+            morador.email =req.body.email,
+            morador.possui_veiculo = req.body.possui_veiculo,
+            morador.placa_veiculo = req.body.placa_veiculo,
+            morador.modelo_veiculo = req.body.modelo_veiculo,
+            morador.cor_veiculo = req.body.cor_veiculo, 
+            morador.image = req.body.image,
+            morador.save((err, morador) => {
+                if(err){
+                    resp.status(500).send(err);
+                }else{
+                    resp.status(200).send(morador);
+                }
             })
         }
     })
 });
 
-app.get('/moradores/:id_morador', (req, resp) => {
-    // Select para todos UM morador específico. -> Botão EDITAR (morador)
-    var p = {nome: "Rdolfo", cpf: "99988877766"};
-    resp.send(JSON.stringify(p));
-});
-
-app.get('/visitantes/:id_visitante', (req, resp) => {
-    // Select para todos UM visitante específico. -> Botão EDITAR (Visitante)
-    var p = {nome: "Luis", cpf: "99988877766"};
-    resp.send(JSON.stringify(p));
-});
-
-app.put('/visitantes/:id_visitante', (req, resp) => {
-    //Update para um visitante específico. -> Botão ATUALIZAR (visitante)
-})
-
-app.put('/moradores/:id_morador', (req, resp) => {
-    //Update para um morador específico. -> Botão ATUALIZAR (morador)
-})
-
-app.delete('/moradores/:id_morador', (req, resp) => {
-    //Delete para um morador específico. -> Botão EXCLUIR (morador)
-})
-
-app.delete('/visitantes/:id_visitante', (req, resp) => {
-    //Delete para um visitante específico. -> Botão EXCLUIR (visitante)
-})
-
-app.post('/cadastro-morador', (req, resp) => {
-    //Criar um morador específico. -> Botão ADICIONAR (morador)
-    resp.header("Access-Control-Allow-Origin", "*");
-    MongoClient.connect("mongodb://localhost:27017/dwavisit", 
-    { useNewUrlParser: true },
-    function(err, client){
-        if(err) throw err;
-        else{
-            var db = client.db("dwavisit");
-            var collection = db.collection("moradores").insert();
+app.delete('/moradores/:id', (req, resp) => {
+    Morador.deleteOne({_id: req.params.id}, (err) => {
+        if(err){
+            resp.status(500).send(err);
+        }else{
+            resp.status(200).send({});
         }
     })
 })
-app.post('/cadastro-visitante', (req, resp) => {
-    //Criar um visitante específico. -> Botão ADICIONAR (visitante)
-})
-
-
-
-
-app.get('/moradores', (req, resp) => {
-    if (req.params.cpf === "99988877766") {
-        resp.send(JSON.stringify({ error: "CPF Verificado e Válido" }));
-    } else {
-        resp.send(JSON.stringify({ error: "Miau" }));
-    }
-});
-
-
-app.post('/pessoa', (req, resp) => {
-    // Conectar no mongodb
-    // pegar dados da req
-    // inserir no mongodb
-});
 
 app.listen(port, () => console.log("Requisição Realizada"));

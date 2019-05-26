@@ -1,13 +1,20 @@
-<mat-card *ngFor="let retorno of retornoDB">
-  <mat-card-title>{{ retorno.nome }}</mat-card-title>
-  <mat-card-subtitle>Morador</mat-card-subtitle>
-  <img
-    mat-card-image
-    src='{{retorno.foto}}'
-    alt="Photo of a Shiba Inu"
-  />
-  <div class="buttons">
-    <button mat-button color="primary">Editar</button>
-    <button mat-button color="warn">Excluir</button>
+<!-- <mat-list class="lista-moradores" *ngIf="moradoresReq | async as moradores"> -->
+  <mat-card *ngFor="let morador of moradoresList">
+    <mat-card-title>{{ morador.nome }}</mat-card-title>
+    <mat-card-subtitle>Morador</mat-card-subtitle>
+    <img
+      mat-card-image
+      src='{{morador.image}}'
+      alt="Photo of a Shiba Inu"
+    />
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="editMorador(morador)">EDITAR</button>
+      <button mat-button color="warn" (click)="deleteMorador(morador)">EXCLUIR</button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="sem-moradores" *ngIf="moradoresList.length == 0">
+    <h2>Não existem moradores cadastrados</h2>
+    <button class="addMorador" [routerLink]="['/cadastro-morador']" mat-raised-button color="primary">Adicionar Morador</button>
   </div>
-</mat-card>
+    <!-- </mat-list> -->
+
