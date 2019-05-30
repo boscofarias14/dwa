@@ -3,17 +3,14 @@ const body_parser = require('body-parser');
 const mongoose = require('mongoose');
 const port = 3000;
 const app = express();
-var MongoClient = require("mongodb").MongoClient;
 var cors = require('cors')
 const Morador = require('./morador');
 const Visitante = require('./visitante');
 
+
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({extended:true}));
 app.use(cors());
-
-// mongoose.connect("mongodb://localhost:27017/dwavisit", 
-// { useNewUrlParser: true });
 
 mongoose.connect("mongodb+srv://dwaadmin:dwaadmin@clusterdwavisit-znci3.mongodb.net/test?retryWrites=true", 
 { useNewUrlParser: true });
@@ -45,17 +42,6 @@ app.get('/moradores', (req, resp) => {
     })
 })
 
-
-app.get('/visitantes', (req, resp) => {
-    Visitante.find().lean().exec((err, visitantes) => {
-        if(err){
-            resp.status(500).send(err);
-        }else{
-            resp.status(200).send(visitantes);
-        }
-    })
-});
-
 app.post('/moradores', (req, resp) => {
     resp.header("Access-Control-Allow-Origin", "*");
     //Criar um morador específico. -> Botão ADICIONAR (morador)
@@ -80,23 +66,7 @@ app.post('/moradores', (req, resp) => {
             resp.status(200).send(mor);
         }
     })
-})
-
-app.post('/visitantes', (req, resp) =>{
-    v = new Visitante({
-        nome: req.body.nome,
-        cpf: req.body.cpf,
-        contato: req.body.contato
-    });
-    
-    v.save((err, vis) =>{
-        if(err){
-            resp.status(500).send(err);
-        }else{
-            resp.status(200).send(vis);
-        }
-    })
-})
+});
 
 app.patch('/moradores/:id', (req, resp) => {
     Morador.findById(req.params.id, (err, morador) => {
@@ -136,5 +106,36 @@ app.delete('/moradores/:id', (req, resp) => {
         }
     })
 })
+
+app.get('/visitantes', (req, resp) => {
+    Visitante.find().lean().exec((err, visitantes) => {
+        if(err){
+            resp.status(500).send(err);
+        }else{
+            resp.status(200).send(visitantes);
+        }
+    })
+});
+
+app.post('/visitantes', (req, resp) =>{
+    v = new Visitante({
+        nome: req.body.nome,
+        cpf: req.body.cpf,
+        contato: req.body.contato,
+        placa_veiculo: req.body.placa_veiculo,
+        modelo_veiculo: req.body.modelo_veiculo,
+        cor_veiculo: req.body.cor_veiculo
+    });
+    
+    v.save((err, vis) =>{
+        if(err){
+            resp.status(500).send(err);
+        }else{
+            resp.status(200).send(vis);
+        }
+    })
+})
+
+
 
 app.listen(port, () => console.log("Requisição Realizada"));

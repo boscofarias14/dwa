@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import { MongoService } from 'src/app/services/mongo.service';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'dwa-lista-moradores',

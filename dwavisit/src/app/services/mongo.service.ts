@@ -33,4 +33,8 @@ export class MongoService {
   deleteMorador(morador: Morador): Observable<Morador> {
     return this.http.delete<Morador>(`${this.url}/moradores/${morador._id}`);
   }
+
+  addVisitante(visitante: Visitante): Observable<Visitante> {
+    return this.http.post<Visitante>(`${this.url}/visitantes`, visitante);
+  }
 }

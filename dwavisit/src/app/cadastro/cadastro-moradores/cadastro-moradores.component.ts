@@ -19,9 +19,9 @@ export class CadastroMoradoresComponent implements OnInit {
   optionsVeiculo: string [] = ['Sim', 'Não'];
   morador: Morador = {
     _id: '',
-    apartamento: 0,
+    apartamento: null,
     bloco: '',
-    cpf: 0,
+    cpf: null,
     email: '',
     image: '',
     nome: '',
@@ -39,19 +39,17 @@ export class CadastroMoradoresComponent implements OnInit {
 
   addMorador(morador: Morador) {
     console.log(morador);
-    // const hab: Morador = {nome, cpf, bloco, apartamento, telefone, email,
-    //   possui_veiculo: (this.possuiVeiculo === 'Não' ? false : true), image};
-    // this.MongoService.postMorador(morador).subscribe(
-    //   // tslint:disable-next-line:no-shadowed-variable
-    //   (morador: Morador) => {
-    //     alert('Morador cadastrado com sucesso!');
-    //     console.log(morador);
-    //   },
-    //   (err) => {
-    //     alert('Ocorreu um erro ao salvar o Morador!');
-    //     console.log(err);
-    //   }
-    // );
+    this.MongoService.postMorador(morador).subscribe(
+      // tslint:disable-next-line:no-shadowed-variable
+      (morador: Morador) => {
+        alert('Morador cadastrado com sucesso!');
+        console.log(morador);
+      },
+      (err) => {
+        alert('Ocorreu um erro ao salvar o Morador!');
+        console.log(err);
+      }
+    );
   }
 
 }

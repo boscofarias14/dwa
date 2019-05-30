@@ -1,6 +1,7 @@
 mat-grid-tile{
   background-color: #3A111C;
   color:#fff;
+  z-index:2;
 }
 mat-grid-tile:first-child{
   border-right: 1px solid #3A111C;

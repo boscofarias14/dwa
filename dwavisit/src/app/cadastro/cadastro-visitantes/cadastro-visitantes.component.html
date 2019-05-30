@@ -1,31 +1,31 @@
 <h2>Cadastro de Visitante</h2>
 <form>
   <mat-form-field>
-    <input matInput placeholder="Nome" required>
+    <input matInput placeholder="Nome" required [(ngModel)]="visitante.nome" [ngModelOptions]="{standalone: true}">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="CPF" required>
+    <input matInput placeholder="CPF" required [(ngModel)]="visitante.cpf" [ngModelOptions]="{standalone: true}">
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Contato" required>
+    <input matInput placeholder="Contato" required [(ngModel)]="visitante.contato" [ngModelOptions]="{standalone: true}">
   </mat-form-field>
-  <h4>Possui Veículo?</h4>
+  <h4>Preencher caso possua veículo</h4>
   <div id="radioButton">
-    <mat-radio-group>
+    <!-- <mat-radio-group>
       <mat-radio-button #radioSim value="s">Sim</mat-radio-button>
       <mat-radio-button #radioNao value="n">Não</mat-radio-button>
-    </mat-radio-group>
+    </mat-radio-group> -->
   </div>
-  <div class="dados-veiculo" *ngIf="radioSim.checked">
+  <div class="dados-veiculo">
     <mat-form-field>
-      <input matInput placeholder="Placa do Veículo">
+      <input matInput placeholder="Placa do Veículo" [(ngModel)]="visitante.placa_veiculo" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Modelo do Veículo / Marca">
+      <input matInput placeholder="Modelo do Veículo / Marca" [(ngModel)]="visitante.modelo_veiculo" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Cor do Veículo">
+      <input matInput placeholder="Cor do Veículo" [(ngModel)]="visitante.cor_veiculo" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
   </div>
-    <button [routerLink]="['/']" mat-raised-button color="primary">Adicionar Visitante</button>
+    <button [routerLink]="['/']" mat-raised-button color="primary" (click)="addVisitante(visitante)">Adicionar Visitante</button>
 </form>
